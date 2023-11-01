@@ -7,8 +7,7 @@ services:
       - "443:443"
     volumes:
       - ./eshop:/opt/lampp/htdocs
-    networks:
-      - mynet
+
     environment:
       - MYSQL_ROOT_PASSWORD=12345
       - MYSQL_DATABASE=ebdb
@@ -16,8 +15,4 @@ services:
     image: php:latest
     volumes:
       - ./eshop:/var/www/html
-    networks:
-      - mynet
-
-networks:
-  - mynet
+   

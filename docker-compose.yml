@@ -1,18 +1,24 @@
 version: '3'
-services:
-  xampp:
-    image: tomsik68/xampp:latest
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./eshop:/opt/lampp/htdocs
 
+services:
+  db:
+    image: mysql:5.7
+    container_name: php_db
     environment:
-      - MYSQL_ROOT_PASSWORD=12345
-      - MYSQL_DATABASE=ebdb
-  php:
-    image: php:latest
+      MYSQL_ROOT_PASSWORD: Root123$
+      MYSQL_DATABASE: ebdb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Root123$
+    ports:
+      - "9906:3306"
+  web:
+    image: php:7.2.2-apache
+    container_name: php_web
+    depends_on:
+      - db
     volumes:
-      - ./eshop:/var/www/html
-   
+      - ./php/:/var/www/html/
+    ports:
+      - "8100:80"
+    stdin_open: true
+    tty: true

@@ -11,6 +11,7 @@ services:
       MYSQL_PASSWORD: 12345678
     ports:
       - "9906:3306"
+
   web:
     image: php:7.2.2-apache
     container_name: php_web
@@ -22,3 +23,11 @@ services:
       - "8100:80"
     stdin_open: true
     tty: true
+
+  test_runner:
+    image: markhobson/maven-chrome
+    container_name: test_runner
+    volumes:
+      - ./your_test_directory:/usr/src/app  # Mount your test directory
+    command: mvn clean test  
+   

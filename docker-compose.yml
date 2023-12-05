@@ -5,10 +5,10 @@ services:
     image: mysql:5.7
     container_name: php_db
     environment:
-      MYSQL_ROOT_PASSWORD: Root123$
-      MYSQL_DATABASE: ebdb
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: eshop
       MYSQL_USER: root
-      MYSQL_PASSWORD: Root123$
+      MYSQL_PASSWORD: 12345678
     ports:
       - "9906:3306"
   web:
